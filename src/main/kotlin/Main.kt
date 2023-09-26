@@ -4,7 +4,8 @@ fun main() {
     //sumAverageDoubleArray()
     //stringArrayFunction()
     //isFoundInIntArray()
-    addTwoIntMatrices()
+    //addTwoIntMatrices()
+    multiplyIntMatrices()
 }
 
 fun sumAverageDoubleArray() {
@@ -155,5 +156,94 @@ fun addTwoIntMatrices() {
     println("Sum of the Matrices:")
     for(i in matrixSum.indices){
         println("${matrixSum[i].contentToString()} ")
+    }
+}
+
+fun multiplyIntMatrices() {
+    /*
+     A = [3 7]
+         [4 9]
+     B = [6 2]
+         [5 8]
+        Now each of the elements of product matrix AB can be calculated as follows:
+
+        AB11 = 3 × 6 + 7 × 5 = 53
+        AB12 = 3 × 2 + 7 × 8 = 62
+        AB21 = 4 × 6 + 9 × 5 = 69
+        AB22 = 4 × 2 + 9 × 8 = 80
+
+     AB = [53 62]
+          [69 80]
+
+      **Matrix 1 has to have the same number of columns and Matrix 2 has rows**
+
+    C = [3, 4, 5, 6]
+        [7, 8, 9, 8]
+        [3, 2, 1, 2]
+
+    D = [3, 4]
+        [2, 3]
+        [4, 5]
+        [6, 7]
+
+    CD = [73, 91]
+         [121, 153]
+         [29, 37]
+    */
+    val scanner = Scanner(System.`in`)
+
+    print("Enter the number of rows and columns of First matrix : ")
+    val rows1   = scanner.nextInt()
+    val column1 = scanner.nextInt()
+
+    print("Enter the number of rows and columns of Second matrix : ")
+    val rows2   = scanner.nextInt()
+    val column2 = scanner.nextInt()
+
+    if(column1 != rows2){
+        println("No of Column in first Matrix must be Equal to no of rows in second Matrix !!")
+        return
+    }
+
+    val matrixA     = Array(rows1) { IntArray(column1) }
+    val matrixB     = Array(rows2) { IntArray(column2) }
+    val productMatrix   = Array(rows1) { IntArray(column2) }
+
+    println("Enter the Elements of First Matrix ($rows1 X $column1} ): ")
+    for(i in matrixA.indices){
+        for(j in matrixA[i].indices){
+            print("matrixA[$i][$j]: ")
+            matrixA[i][j]=scanner.nextInt()
+        }
+    }
+
+    println("Enter the Elements of Second Matrix ($rows2 X $column2} ): ")
+    for(i in matrixB.indices){
+        for(j in matrixB[i].indices){
+            print("matrixB[$i][$j]: ")
+            matrixB[i][j]=scanner.nextInt()
+        }
+    }
+
+    println("Matrix A : ")
+    for(i in matrixA.indices){
+        println("${matrixA[i].contentToString()} ")
+    }
+
+    println("Matrix B : ")
+    for(i in matrixB.indices){
+        println("${matrixB[i].contentToString()} ")
+    }
+
+    for(i in productMatrix.indices){
+        for(j in productMatrix[i].indices){
+            for(k in matrixB.indices)
+                productMatrix[i][j]=productMatrix[i][j] + (matrixA[i][k] * matrixB[k][j])
+        }
+    }
+
+    println("Product of the Matrices:")
+    for(i in productMatrix.indices){
+        println("${productMatrix[i].contentToString()} ")
     }
 }
