@@ -1,8 +1,9 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    sumAverageDoubleArray()
-    stringArrayFunction()
+    //sumAverageDoubleArray()
+    //stringArrayFunction()
+    isFoundInIntArray()
 }
 
 fun sumAverageDoubleArray() {
@@ -61,4 +62,48 @@ fun stringArrayFunction() {
 
     val desSortedArray = strArray.sortedArrayDescending()
     println("Sorted descending string array elements: ${desSortedArray.contentToString()}")
+}
+
+fun isFoundInIntArray() {
+    val scanner = Scanner(System.`in`)
+
+    print("enter number of elements in the array: ")
+    val size = scanner.nextInt()
+
+    val intArray = IntArray(size)
+
+    println("Enter Int Array Elements:")
+    for(i in intArray.indices) {
+        print("intArray[$i]: ")
+        intArray[i] = scanner.nextInt()
+    }
+    println("Array: ${intArray.contentToString()}")
+
+    println("Enter integer number to be searched in Array: ")
+    val num = scanner.nextInt()
+
+    var isFound = false
+    var itemAt = 0
+
+    for(item in intArray) {
+        if(item == num) {
+            isFound = true
+            itemAt = intArray.indexOf(item)
+            break
+        }
+    }
+
+    if (isFound){
+        println("$num found in Array at index $itemAt")
+    } else {
+        System.err.println("$num not found in array")
+    }
+
+    val isFound2 = intArray.contains(num)
+    if (isFound2) {
+        println("$num found in Array")
+    }else {
+        System.err.println("$num not found in array")
+    }
+
 }
