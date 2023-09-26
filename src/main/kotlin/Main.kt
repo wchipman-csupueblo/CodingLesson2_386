@@ -1,10 +1,10 @@
 import java.util.*
 
 fun main() {
-    //sumAverageDoubleArray()
-    //stringArrayFunction()
-    //isFoundInIntArray()
-    //addTwoIntMatrices()
+    sumAverageDoubleArray()
+    stringArrayFunction()
+    isFoundInIntArray()
+    addTwoIntMatrices()
     multiplyIntMatrices()
 }
 
@@ -47,7 +47,7 @@ fun stringArrayFunction() {
     println("Enter number of elements in the String array:")
     val size = s.nextInt()
 
-    val strArray = Array<String>(size){""}
+    val strArray = Array(size){""}
 
     println("Enter String Array Elements: ")
     for (i in strArray.indices) {
