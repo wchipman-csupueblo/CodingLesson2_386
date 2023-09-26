@@ -1,9 +1,10 @@
 import java.util.*
 
-fun main(args: Array<String>) {
+fun main() {
     //sumAverageDoubleArray()
     //stringArrayFunction()
-    isFoundInIntArray()
+    //isFoundInIntArray()
+    addTwoIntMatrices()
 }
 
 fun sumAverageDoubleArray() {
@@ -105,5 +106,54 @@ fun isFoundInIntArray() {
     }else {
         System.err.println("$num not found in array")
     }
+}
 
+fun addTwoIntMatrices() {
+    val rows: Int
+    val columns: Int
+
+    val scanner = Scanner(System.`in`)
+
+    println("Enter the number of rows and columns of the matrix:")
+    rows = scanner.nextInt()
+    columns = scanner.nextInt()
+
+    val matrixA = Array(rows){IntArray(columns)}
+    val matrixB = Array(rows){IntArray(columns)}
+
+    val matrixSum = Array(rows){IntArray(columns)}
+
+    println("Enter the elements of the first matrix($rows X $columns):")
+    for(i in matrixA.indices){
+        for(j in matrixA[i].indices) {
+            print("matrixA[$i][$j]:")
+            matrixA[i][j] = scanner.nextInt()
+        }
+    }
+
+    println("Enter the elements of the second matrix($rows X $columns):")
+    for(i in matrixB.indices){
+        for(j in matrixB[i].indices) {
+            print("matrixB[$i][$j]:")
+            matrixB[i][j] = scanner.nextInt()
+        }
+    }
+    println("Matrix A:")
+    for(i in matrixA.indices){
+        println("${matrixA[i].contentToString()} ")
+    }
+    println("Matrix B:")
+    for(i in matrixB.indices){
+        println("${matrixB[i].contentToString()} ")
+    }
+
+    for(i in matrixSum.indices){
+        for(j in matrixSum[i].indices){
+            matrixSum[i][j]=matrixA[i][j]+matrixB[i][j]
+        }
+    }
+    println("Sum of the Matrices:")
+    for(i in matrixSum.indices){
+        println("${matrixSum[i].contentToString()} ")
+    }
 }
